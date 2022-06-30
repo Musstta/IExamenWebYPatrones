@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Listado de conciertos</title>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a class="navbar-brand" href="#">Control de conciertos</a>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/conciertos}">Control de conciertos</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <h1>Lista de conciertos</h1>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <a th:href="@{/conciertos/nuevo}" class="btn btn-primary btn-sm mb3">Agregar concierto</a>
+                </div> 
+            </div>
+            <br>
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Artista</th>
+                        <th>Costo</th>
+                        <th>Fecha</th>
+                        <th>Lugar</th>
+                        <th>Capacidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="concierto : ${conciertos}">
+                        <td th:text="${concierto.artista}">Artista</td>
+                        <td th:text="${concierto.costo}">Costo</td>
+                        <td th:text="${concierto.fecha}">Fecha</td>
+                        <td th:text="${concierto.lugar}">Lugar</td>
+                        <td th:text="${concierto.capacidad}">Capacidad</td>
+                        <td>
+                            <a th:href="@{/conciertos/editar/{id}(id=${concierto.id})}" class="btn btn-info">Editar</a>
+                            <a th:href="@{/conciertos/{id}(id=${concierto.id})}" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

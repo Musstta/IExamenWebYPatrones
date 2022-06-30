@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Editar conciertos</title>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+                <a class="navbar-brand" href="#">Control de conciertos</a>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/conciertos}">Control de conciertos</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 container justify-content-center-card">
+                    <h1 class="text-center">Editar conciertos</h1>
+                    <div class="card-body">
+                        <form th:action="@{/conciertos/{id}(id=${concierto.id})}" th:object="${concierto}" method="POST">
+                            <div class="form-group">
+                                <label>Artista :</label>
+                                <input type="text" name="artista" th:field="*{artista}" class="form-control" placeholder="Digite el nombre de la banda ">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Costo :</label>
+                                <input type="number" name="costo" th:field="*{costo}" class="form-control" placeholder="Digite el costo de la entrada ">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Fecha :</label>
+                                <input type="text" name="fecha" th:field="*{fecha}" class="form-control" placeholder="Digite la fecha del concierto (DD/MM/YY) ">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Lugar :</label>
+                                <input type="text" name="lugar" th:field="*{lugar}" class="form-control" placeholder="Digite el lugar del concierto ">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Capacidad :</label>
+                                <input type="number" name="capacidad" th:field="*{capacidad}" class="form-control" placeholder="Digite la capacidad del lugar ">
+                            </div>
+                            <br>
+                            <div class="box-footer">
+                                <button class="btn btn-success">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
